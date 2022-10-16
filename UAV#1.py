@@ -1,5 +1,3 @@
-import math
-
 N, M, Dx, Dy, k = list(map(float, input("Enter coordinates: ").split()))
 k = int(k)
 N = int(N)
@@ -15,20 +13,13 @@ for i in range(k):
 count = 0
 
 while count != k:
-    for i in range(N):
-        if math.isclose(coordinates[count][0], Dx*i, rel_tol = 0.24):
-            rounded.append(Dx*i)
-    count = count+1
-
-count = 0
-
-while count != k:
-    for i in range(M):
-        if math.isclose(coordinates[count][1], Dy*i, rel_tol = 0.24):
-            rounded.append(round(Dy*i))
+    rounded.append(round(coordinates[count][0]/Dx))
+    rounded.append(round(coordinates[count][1]/Dy)-1)
     count = count+1
 
 print(rounded)
+for i in range(0, len(rounded)-1, 2):
+    print(str(rounded[i]) + " " + str(rounded[i+1]))
 
 """
 8 8 0.5 0.5 3
